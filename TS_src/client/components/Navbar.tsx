@@ -65,7 +65,7 @@ const Navbar: FC = () : ReactElement => {
                 </div>
               }
               <div id='nav-btns' className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
-                <h1 className='text-2xl text-white flex flex-shrink-0 items-center'>
+                <h1 className='text-3xl text-white flex flex-shrink-0 items-center'>
                   <Link
                     to='intro' 
                     spy={true} 

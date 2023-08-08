@@ -50,9 +50,10 @@ const MeetTheTeam: FC = () : ReactElement => {
           <h2 className='text-5xl font-extrabold border-black border-b-2 border-x-0 border-t-0'>Meet the Team</h2>
           <div className='flex flex-wrap justify-center'>
             {
-              profileCards.map((profile : ProfileCardProps) : ReactElement => {
+              profileCards.map((profile : ProfileCardProps, i) : ReactElement => {
                 const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
                 return <ProfileCard
+                key = {i}
                 id = {memberName}
                 imageSrc = {imageSrc}
                 memberName = {memberName}

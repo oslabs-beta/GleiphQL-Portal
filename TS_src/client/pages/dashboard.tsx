@@ -7,6 +7,8 @@ import ChartHeader from '../components/ChartHeader';
 import { Navigate } from 'react-router-dom';
 import checkSession from '../helper-functions/checkSession';
 import Sidebar from '../components/Sidebar';
+import { DonutIPChart } from '../components/DonutIPChart';
+import { DonutObjectChart } from '../components/DonutObjectChart';
 import streamWS from '../helper-functions/websocket';
 import { PartialStore } from '../../types';
 
@@ -48,11 +50,23 @@ const Dashboard: FC = () : ReactElement => {
       <div>
         <Sidebar />
       </div>
-      <main className='flex flex-col place-items-center w-screen sm:pl-12'>
+      <main className='flex flex-col place-items-center w-screen sm:pl-2 mt-10' id='content'>
       { currEndpoint.endpoint_id? 
         <>
           <ChartHeader />
-          <LineChart />
+          <div className='flex justify-evenly w-full'>
+            <div className='w-3/5 rounded-lg border border-slate-100 border-1'>
+              <LineChart />
+            </div>
+            <div className='w-1/4 mr-10 rounded-lg border border-slate-100 border-1'>
+              <div className='h-2/5 my-10'>
+                <DonutIPChart />
+              </div>
+              <div className='h-2/5'>
+                <DonutObjectChart />
+              </div>
+            </div>
+          </div>
           <RequestTable />
         </> : 
         <div className='mt-8 flex flex-col place-items-center w-screen sm:pl-12'>
