@@ -7,8 +7,8 @@ import { SetStrValueFx, PartialStore } from '../../types';
 
 const LineChart: FC = () : ReactElement => {
   const { endpointRequests } : PartialStore = useStore();
-  const [chartTimeInterval, setChartTime] = useState<string>('Last 7 Days');
-  const [chartDataType, setChartDataType] = useState<string>('Requests');
+  const [chartTimeInterval, setChartTime] = useState<string>('Last 30 Requests');
+  const [chartDataType, setChartDataType] = useState<string>('Complexity');
 
   // change type of data displayed in the line chart
   const dataTypeChange: SetStrValueFx = (dataType: string) : void => {
