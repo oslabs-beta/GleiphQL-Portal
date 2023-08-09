@@ -187,13 +187,13 @@ const FeaturesSection: FC = () : ReactElement => {
                             <h3
                               data-cy='feat-4-title'
                               className='text-xl mb-1 font-semibold'>
-                                Documentation
+                                Apollo Compatability
                             </h3>
                             <p
                               data-cy='feat-4-body'
                               className='mb-4'>
-                              Built by developers for developers. Our comprehensive documentation makes it easy
-                              to work with GleiphQL!
+                              Our feature seamlessly integrates with Apollo Client and Server, 
+                              offering you smooth integration with your existing Apollo-powered architecture
                             </p>
                             <button
                               data-cy='feat-4-btn'

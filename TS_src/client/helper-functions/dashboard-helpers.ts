@@ -14,10 +14,27 @@ interface ChartData {
   datasets: DataSet[];
 }
 
+// Helper function to convert month name to month number
+function getMonthNumber(monthName: string) {
+  const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+  return (months.indexOf(monthName) + 1).toString().padStart(2, '0');
+}
+
 // create formattedDate for x-axis of the chart (used for dataTypes Complexity and Depth)
 const createXAxisPoint = (endpointRequest: EndpointRequest): string => {
   const rawDate: string = endpointRequest.timestamp;
-  const formattedDate: string = new Date(rawDate).toISOString().split('T')[0];
+  const dateComponents = rawDate.split(' ');
+  const month = dateComponents[1];
+  const day = dateComponents[2];
+  const year = dateComponents[3];
+  const formattedDate = `${year}-${getMonthNumber(month)}-${day}`;
+
+  // const rawDate: string = endpointRequest.timestamp;
+  // const formattedDate: string = new Date(rawDate).toISOString().split('T')[0];
+  // console.log(formattedDate)
   return formattedDate;
 };
 

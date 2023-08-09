@@ -179,10 +179,10 @@ h3 {
 
 #chartContainer {
   position: relative;
-  padding: 24px;
-  margin: 24px;
-  height: 80vh;
-  width: 70vw;
+  padding: 5px;
+  margin: 5px;
+  height: 45vh;
+  width: 100%;
 }
 
 /*    ~~ End of component: yyoon's ~~   */
