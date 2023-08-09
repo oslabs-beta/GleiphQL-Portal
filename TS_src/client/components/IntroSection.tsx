@@ -1,8 +1,7 @@
-import { FC, ReactElement } from 'react';
 import { Element } from 'react-scroll';
 
 
-const IntroSection: FC = () : ReactElement => {
+const IntroSection = () => {
 
   return (
     <>

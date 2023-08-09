@@ -1,9 +1,8 @@
-import { FC, ReactElement } from 'react';
 import notify from '../helper-functions/notify';
 import { Element } from 'react-scroll';
 
 
-const InstructionSection: FC = () : ReactElement => {
+const InstructionSection = () => {
 
   // to copy npm install scripts upon user's click
   const copyText = async (elementId : string) : Promise<void> => {

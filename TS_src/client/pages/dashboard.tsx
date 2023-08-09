@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState , useEffect } from 'react';
+import { useState , useEffect } from 'react';
 import useStore from '../store';
 import Navbar from '../components/Navbar';
 import RequestTable from '../components/RequestTable';
@@ -13,7 +13,7 @@ import streamWS from '../helper-functions/websocket';
 import { PartialStore } from '../../types';
 
 
-const Dashboard: FC = () : ReactElement => {
+const Dashboard = () => {
   const { 
     currEndpoint, 
     isLoggedIn, 

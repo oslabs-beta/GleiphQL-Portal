@@ -1,4 +1,4 @@
-import { FC, ReactElement, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import useStore from '../store';
 import { FiX } from 'react-icons/fi';
 import '../stylesheets/index.css';
@@ -6,7 +6,7 @@ import axios from 'axios';
 import notify from '../helper-functions/notify';
 import { UserResponse, PartialStore } from '../../types';
 
-const Register: FC = () : ReactElement => {
+const Register = () => {
   const { 
     loginToggle, 
     registerToggle, 

@@ -1,4 +1,4 @@
-import { FC, ReactElement, MouseEvent } from 'react'
+import { MouseEvent } from 'react'
 import Login from './Login';
 import Register from './Register';
 import useStore from '../store';
@@ -9,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal: FC<ModalProps> = ({ open, onClose } : ModalProps) : ReactElement | null => {
+const Modal = ({ open, onClose } : ModalProps) => {
   if (!open) return null;
 
   const { showLogin, showRegistration } : PartialStore = useStore();

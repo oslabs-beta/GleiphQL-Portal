@@ -1,6 +1,4 @@
-import { ReactElement } from 'react';
-
-export default function ErrorPage() : ReactElement {
+export default function ErrorPage() {
   return (
     <main className='flex flex-col place-items-center'>
       <h1 className='text-8xl text-blue-950 m-24'>Oops!</h1>

@@ -1,4 +1,4 @@
-import { ReactElement, Fragment } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useStore from '../store';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
@@ -15,7 +15,7 @@ interface ConfirmationModalProps {
   setEndpointArray: (endpoints: Endpoint[]) => void;
 }
 
-export default function ConfirmationModal({open, setOpen, cancelButtonRef, setEndpointArray}: ConfirmationModalProps) : ReactElement {
+export default function ConfirmationModal({open, setOpen, cancelButtonRef, setEndpointArray}: ConfirmationModalProps) {
   
   const { currEndpoint, setCurrEndpoint, currUser, connection } : PartialStore = useStore();
 

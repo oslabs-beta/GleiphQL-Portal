@@ -1,11 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import useStore from '../store';
-import { FC, ReactElement } from 'react';
 import { EndpointRequest, PartialStore } from '../../types';
 import ObjectTypesDropdown from './ObjectTypesDropdown';
 import QueryStringDropdown from './QueryStringDropdown';
 
-const RequestTable : FC = () : ReactElement => {
+const RequestTable = () => {
   const { endpointRequests } : PartialStore = useStore();
 
   return (
@@ -17,8 +16,8 @@ const RequestTable : FC = () : ReactElement => {
             <th className='w-[12%]'>IP Address</th>
             <th className='w-[12%]'>Complexity Score</th>
             <th className='w-[12%]'>Complexity Limit</th>
-            <th className='w-[12%]'>Query String</th>
-            <th className='w-[12%] hidden md:table-cell'>Query Depth</th>
+            <th className='w-[12%] hidden md:table-cell'>Query String</th>
+            <th className='w-[12%] hidden lg:table-cell'>Query Depth</th>
             <th className='w-[12%] hidden lg:table-cell'>Number of Object Types</th>
             <th className='w-[12%] hidden lg:table-cell'>Blocked</th>
             <th className='w-[24%]'>Time Stamp</th>
@@ -35,7 +34,7 @@ const RequestTable : FC = () : ReactElement => {
                 <th className='hidden md:table-cell'>
                   <QueryStringDropdown queryString={row.query_string} />
                 </th>
-                <th className='hidden md:table-cell'>{row.query_depth}</th>
+                <th className='hidden lg:table-cell'>{row.query_depth}</th>
                 <th className='hidden lg:table-cell'>
                   <div>
                     {row.object_types.objectTypes.length}

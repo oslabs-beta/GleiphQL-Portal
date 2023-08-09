@@ -1,4 +1,4 @@
-import { FC, ReactElement, FormEvent, useEffect, useState, useRef } from 'react';
+import { FormEvent, useEffect, useState, useRef } from 'react';
 import useStore from '../store';
 import ConfirmationModal from './ConfirmationModal';
 import axios from 'axios';
@@ -7,15 +7,9 @@ import {
   Ripple,
   initTE,
 } from 'tw-elements';
+import { PartialStore } from '../../types';
 
 import { Endpoint, SetEndpointRequests, SetNumAndStrFx, UserInfo } from '../../types';
-
-interface PartialStore {
-  setCurrEndpoint: SetNumAndStrFx;
-  currEndpoint: Endpoint;
-  currUser: UserInfo;
-  setEndpointRequests: SetEndpointRequests;
-}
 
 // retrieve all saved endpoints for user
 const queryEndPoints = async (userId: number): Promise<Endpoint[]> => {
@@ -23,7 +17,7 @@ const queryEndPoints = async (userId: number): Promise<Endpoint[]> => {
   return response;
 }
 
-const Sidebar: FC = () : ReactElement => {
+const Sidebar = () => {
   const [ endpointArray, setEndpointArray ] = useState<Endpoint[]>([]);
   const { 
     setCurrEndpoint, 
@@ -204,7 +198,7 @@ const Sidebar: FC = () : ReactElement => {
           </li>
           <li 
             className='relative pt-2'
-            onClick={()=>{
+            onClick={(): void =>{
               if (menuCollapsed) {
                 setMenuCollapsed(false);
               }
@@ -269,7 +263,7 @@ const Sidebar: FC = () : ReactElement => {
               data-te-collapse-show
             >
               {
-                endpointArray?.map((endpointData: Endpoint, i: number) : ReactElement => {
+                endpointArray?.map((endpointData: Endpoint, i: number) => {
                   return (
                     <li 
                       className='relative'

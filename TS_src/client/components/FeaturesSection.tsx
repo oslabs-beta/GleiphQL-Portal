@@ -1,4 +1,4 @@
-import { ReactElement, FC, useState } from 'react';
+import { useState } from 'react';
 import loginGif from '../public/images/loginGif.gif';
 import teamModalsGif from '../public/images/teamModalsGif.gif';
 import dashboardGif from '../public/images/dashboardGif.gif';
@@ -12,7 +12,7 @@ interface Feature {
   isVisible: boolean;
 }
 
-const FeaturesSection: FC = () : ReactElement => {
+const FeaturesSection = () => {
   // declare an array for all the gifs to display in this component:
   const featuresData : Feature[] = [
     // the first element in the array is the default gif that will render
@@ -70,7 +70,7 @@ const FeaturesSection: FC = () : ReactElement => {
                           className='w-full h-auto align-middle rounded-lg' />
                       ) : (
                         <>
-                          {features.slice(1).map((feature, index) => {
+                          {features.slice(1).map((feature: Feature, index: number) => {
                             // use the map function to iterate over all features (including the default value)
                             if (feature.isVisible) {
                               // checkif the current feature is not the default one (index 0) and its isVisible property is true

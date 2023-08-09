@@ -1,14 +1,14 @@
-import { FC, ReactElement } from 'react';
+
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { ProfileCardProps } from '../../types';
 
-const ProfileCard: FC<ProfileCardProps> = ({
+const ProfileCard = ({
   imageSrc,
   memberName,
   githubLink,
   linkedinLink,
   memberBio
-}) : ReactElement => {
+}: ProfileCardProps) => {
   return (
     <div className='profile-card'>
       <figure className='image'>
@@ -34,7 +34,6 @@ const ProfileCard: FC<ProfileCardProps> = ({
         </a>
       </p>
     </div>
-
   );
 };
 

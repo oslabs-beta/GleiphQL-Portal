@@ -1,9 +1,8 @@
-import { FC, ReactElement } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import GitHubButton from 'react-github-btn'
 
 
-const Footer: FC = () : ReactElement => {
+const Footer = () => {
   return (
     <footer className='h-1/2 screen flex flex-col items-center justify-end p-4'>
       <h2

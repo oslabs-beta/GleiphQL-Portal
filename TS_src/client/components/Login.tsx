@@ -1,4 +1,4 @@
-import { FC, ReactElement, FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import useStore from '../store';
 import { Navigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
@@ -11,7 +11,7 @@ import {
 } from '../../types';
 
 
-const Login: FC = () : ReactElement => {
+const Login = () => {
   const { 
     loginToggle, 
     registerToggle, 

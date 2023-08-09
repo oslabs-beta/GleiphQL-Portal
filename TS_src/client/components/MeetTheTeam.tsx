@@ -1,4 +1,3 @@
-import { FC, ReactElement} from 'react';
 import ProfileCard from './ProfileCard';
 import { Element } from 'react-scroll';
 import { ProfileCardProps } from '../../types';
@@ -39,9 +38,9 @@ const profileCards: ProfileCardProps[] = [
     🎤🔧 Our 24/7 hustler doubles as a Kpop idol, spreading smiles and beats worldwide. 
     But don't be fooled by the dazzling stage presence—this fierce full-stack engineer has an affinity for backend problem-solving skills that'll leave even the toughest bugs shaking in their virtual boots!`
   }
-]
+];
 
-const MeetTheTeam: FC = () : ReactElement => {
+const MeetTheTeam = () => {
 
   return (
     <>
@@ -50,11 +49,10 @@ const MeetTheTeam: FC = () : ReactElement => {
           <h2 className='text-5xl font-extrabold border-black border-b-2 border-x-0 border-t-0'>Meet the Team</h2>
           <div className='flex flex-wrap justify-center'>
             {
-              profileCards.map((profile : ProfileCardProps, i) : ReactElement => {
+              profileCards.map((profile : ProfileCardProps) => {
                 const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
                 return <ProfileCard
-                key = {i}
-                id = {memberName}
+                key = {memberName}
                 imageSrc = {imageSrc}
                 memberName = {memberName}
                 githubLink = {githubLink}
