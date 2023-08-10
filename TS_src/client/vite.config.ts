@@ -9,5 +9,8 @@ export default defineConfig({
 		proxy: {
 			'/api': 'http://localhost:3500'
 		}
-	}
+	},
+  build: {
+    outDir: '../../dist/client', // Replace with the actual path
+  },
 })
