@@ -1,4 +1,4 @@
-import { ReactElement, FC, useState } from 'react';
+import { useState } from 'react';
 import loginGif from '../public/images/loginGif.gif';
 import teamModalsGif from '../public/images/teamModalsGif.gif';
 import dashboardGif from '../public/images/dashboardGif.gif';
@@ -6,13 +6,14 @@ import testingGif from '../public/images/mrBean-Testing.gif';
 import gleiphGif from '../public/images/gleiphQLGif.gif';
 import { FcLandscape, FcMoneyTransfer, FcPaid, FcBullish } from 'react-icons/fc';
 import { Element } from 'react-scroll';
+import { Slide, Fade } from 'react-awesome-reveal';
 
 interface Feature {
   gifUrl: string;
   isVisible: boolean;
 }
 
-const FeaturesSection: FC = () : ReactElement => {
+const FeaturesSection = () => {
   // declare an array for all the gifs to display in this component:
   const featuresData : Feature[] = [
     // the first element in the array is the default gif that will render
@@ -52,76 +53,77 @@ const FeaturesSection: FC = () : ReactElement => {
       <Element name='features'>
         <section id='features'>
           <div className='featuresSection-bg min-h-screen flex flex-col justify-center items-center px-5 py-10'>
-            <h2 data-cy='features-title' className='text-5xl font-extrabold'>Features</h2>
-          <div>
-
-            <div className='container mx-auto'>
-              <div className='flex flex-col lg:flex-row items-center mt-4'>
-
+            <Slide>
+              <h2 data-cy='features-title' className='text-5xl font-extrabold'>Features</h2>
+            </Slide>
+            <div>
+              <Fade delay={1e3} cascade damping={1e-1}>
+                <div className='container mx-auto'>
+                  <div className='flex flex-col lg:flex-row items-center mt-4'>
                   {/* Start of the image container */}
-                  <section className='w-full sm:w-6/12 px-12 md:px-4 mr-auto ml-auto'>
-                    <div className='flex min-w-0 bg-white-200 w-full mb-6 shadow-lg rounded-lg'>
-                      {/* Use conditional rendering to show the proper GIF*/}
-                      {features[0].isVisible ? (
-                        <img
-                          data-cy='gif-display'
-                          alt='...' 
-                          src={features[0].gifUrl} 
-                          className='w-full h-auto align-middle rounded-lg' />
-                      ) : (
-                        <>
-                          {features.slice(1).map((feature, index) => {
-                            // use the map function to iterate over all features (including the default value)
-                            if (feature.isVisible) {
-                              // checkif the current feature is not the default one (index 0) and its isVisible property is true
-                              // if both conditions are true, render the GIF for this feature
-                              return (
-                                <img
-                                  data-cy='gif-display'
-                                  key={index} 
-                                  alt='...' 
-                                  src={feature.gifUrl} className='w-full h-auto align-middle rounded-lg' />
-                              );
-                            }
-                            // if no conditions are met
-                            return null;
-                          })}
-                        </>
-                      )}
-                    </div>
-                  </section>
+                    <section className='w-full sm:w-6/12 px-12 md:px-4 mr-auto ml-auto'>
+                      <div className='flex min-w-0 bg-white-200 w-full mb-6 shadow-lg rounded-lg'>
+                        {/* Use conditional rendering to show the proper GIF*/}
+                        {features[0].isVisible ? (
+                          <img
+                            data-cy='gif-display'
+                            alt='...' 
+                            src={features[0].gifUrl} 
+                            className='w-full h-auto align-middle rounded-lg' />
+                          ) : (
+                          <>
+                            {features.slice(1).map((feature: Feature, index: number) => {
+                              // use the map function to iterate over all features (including the default value)
+                              if (feature.isVisible) {
+                                // checkif the current feature is not the default one (index 0) and its isVisible property is true
+                                // if both conditions are true, render the GIF for this feature
+                                return (
+                                  <img
+                                    data-cy='gif-display'
+                                    key={index} 
+                                    alt='...' 
+                                    src={feature.gifUrl} className='w-full h-auto align-middle rounded-lg' />
+                                );
+                              }
+                              // if no conditions are met
+                              return null;
+                            })}
+                          </>
+                        )}
+                      </div>
+                    </section>
 
-                  {/* start of features content */}
-                  <section className='w-full lg:w-6/12 px-4'>
-                    <ul className='flex flex-col lg:flex-row'>
+                    {/* start of features content */}
+                    <section className='w-full lg:w-6/12 px-4'>
+                      <ul className='flex flex-col lg:flex-row'>
 
-                      {/* start of left features column */}
-                      <div className='w-full lg:w-6/12'>
+                        {/* start of left features column */}
+                        <div className='w-full lg:w-6/12'>
 
                         {/* start of first feature's section */}
-                        <li className='h-1/2 flex flex-col mt-4'>
-                          <div className='px-4 py-5 flex-auto'>
-                            <div className='p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white'>
-                              <FcLandscape size={48}/>
+                          <li className='h-1/2 flex flex-col mt-4'>
+                            <div className='px-4 py-5 flex-auto'>
+                              <div className='p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white'>
+                                <FcLandscape size={48}/>
+                              </div>
+                              <h3
+                                data-cy='feat-1-title'
+                                className='text-xl mb-1 font-semibold'
+                                >
+                                  Complexity Analysis
+                              </h3>
+                              <p
+                                data-cy='feat-1-body'
+                                className='mb-4'>
+                                Dynamically calculate the resource requirements of each query, providing you with invaluable insights into its impact on your system.
+                              </p>
+                              <button
+                                data-cy='feat-1-btn'
+                                className='m-2 p-2 rounded-md bg-sky-900 shadow-lg shadow-sky-500/50 hover:shadow-sky-500/40 hover:bg-sky-600 text-white'
+                                // asigning the button to toggle the GIF index at input number
+                                onClick={() : void => toggleGifVisibility(1)}
+                                >Let's see feature 1 in action</button>
                             </div>
-                            <h3
-                              data-cy='feat-1-title'
-                              className='text-xl mb-1 font-semibold'
-                              >
-                                Complexity Analysis
-                            </h3>
-                            <p
-                              data-cy='feat-1-body'
-                              className='mb-4'>
-                            Dynamically calculate the resource requirements of each query, providing you with invaluable insights into its impact on your system.
-                            </p>
-                            <button
-                              data-cy='feat-1-btn'
-                              className='m-2 p-2 rounded-md bg-sky-900 shadow-lg shadow-sky-500/50 hover:shadow-sky-500/40 hover:bg-sky-600 text-white'
-                              // asigning the button to toggle the GIF index at input number
-                              onClick={() : void => toggleGifVisibility(1)}
-                            >Let's see feature 1 in action</button>
-                          </div>
                         </li>
 
                         {/* start of second feature 'Javascript components' */}
@@ -209,12 +211,12 @@ const FeaturesSection: FC = () : ReactElement => {
                     </ul>
                   </section>
                   {/* end of features icons content */}
-
                 </div>
               </div>
-            </div>
+            </Fade>
           </div>
-        </section>
+        </div>
+      </section>
       </Element>
     </>
   )

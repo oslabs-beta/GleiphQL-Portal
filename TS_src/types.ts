@@ -73,6 +73,12 @@ export interface ErrorObject {
   message: { err: string };
 };
 
+export interface DataSet {
+  label: string;
+  data: number[];
+  borderColor: string;
+  backgroundColor: string;
+}
 
 
 export type SetNumAndStrFx = (num: number, str: string) => void;

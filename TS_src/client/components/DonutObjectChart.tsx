@@ -1,27 +1,28 @@
-import React, { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import useStore from '../store';
-import { EndpointRequest, PartialStore } from '../../types';
+import { PartialStore } from '../../types';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export function DonutObjectChart() {
   const { endpointRequests } : PartialStore = useStore();
-  const objectTypeCount: any = {}
-  const objectTypes: string[] = []
-  const objectTypeOccurrence: number[] = []
-  let sortable: any = []
+  const objectTypeCount: {
+    [key: string]: any
+  } = {};
+  const objectTypes: string[] = [];
+  const objectTypeOccurrence: number[] = [];
+  let sortable = [];
 
 
-  for (let i = 0; i < endpointRequests.length; i++) {
-    for (let j = 0; j < endpointRequests[i].object_types.objectTypes.length; j++) {
+  for (let i: number = 0; i < endpointRequests.length; i++) {
+    for (let j: number = 0; j < endpointRequests[i].object_types.objectTypes.length; j++) {
       if (!objectTypeCount[endpointRequests[i].object_types.objectTypes[j]]) {
-        objectTypeCount[endpointRequests[i].object_types.objectTypes[j]] = 1
+        objectTypeCount[endpointRequests[i].object_types.objectTypes[j]] = 1;
       }
       else if (objectTypeCount[endpointRequests[i].object_types.objectTypes[j]]) {
-        objectTypeCount[endpointRequests[i].object_types.objectTypes[j]] ++
+        objectTypeCount[endpointRequests[i].object_types.objectTypes[j]]++;
       }
     }
   }
@@ -36,9 +37,9 @@ export function DonutObjectChart() {
 
   sortable = sortable.slice(0, 6) 
 
-  for (let i = 0; i < sortable.length; i++) {
-    objectTypes.push(sortable[i][0])
-    objectTypeOccurrence.push(sortable[i][1])
+  for (let i: number = 0; i < sortable.length; i++) {
+    objectTypes.push(sortable[i][0]);
+    objectTypeOccurrence.push(sortable[i][1]);
   }
 
 

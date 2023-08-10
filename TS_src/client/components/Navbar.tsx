@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import useStore from '../store';
@@ -18,7 +18,7 @@ const navigation: Content[] = [
   { name: 'meet-team', offset: 30 },
 ]
 
-const Navbar: FC = () : ReactElement => {
+const Navbar = () => {
   const { 
     loginToggle, 
     currUser, 
@@ -47,7 +47,7 @@ const Navbar: FC = () : ReactElement => {
   }
 
   return (
-    <Disclosure as='nav' className='w-screen bg-blue-950 text-white z-[1036] sticky top-0 z-[1035]'>
+    <Disclosure as='nav' className='w-full bg-blue-950 text-white z-[1036] sticky top-0 z-[1035]'>
       {({ open }) => (
         <>
           <div className='mx-auto px-2 sm:px-6 lg:px-8'>
@@ -81,7 +81,7 @@ const Navbar: FC = () : ReactElement => {
                 <div className='hidden sm:ml-6 sm:block'>
                   {/* Conditionally render the list items only if the user is not logged in */}
                   <ul className='flex space-x-3'>
-                    {!isLoggedIn && navigation.map((content: Content) : ReactElement => (
+                    {!isLoggedIn && navigation.map((content: Content) => (
                       <li key={content.name}>
                         <Link 
                           to={content.name}
@@ -118,7 +118,7 @@ const Navbar: FC = () : ReactElement => {
           </div>
           <Disclosure.Panel className='sm:hidden'>
             <ul className='space-y-1 px-2 pb-3 pt-2'>
-              {navigation.map((content: Content) : ReactElement => (
+              {navigation.map((content: Content) => (
                 <li key={content.name}>
                   <Link 
                     to={content.name}
