@@ -105,36 +105,36 @@ app.listen(PORT, () : void =>
   console.log(`Currently listening on port: ${PORT}`)
 );
 
-// websocket server
-const wssDataController : WebSocketServer = new WebSocketServer({port: 8080}); // port 443
+// // websocket server
+// const wssDataController : WebSocketServer = new WebSocketServer({port: 8080}); // port 443
 
-console.log(`in wssData controller, should be listening on 8080, ${wssDataController}`);
+// console.log(`in wssData controller, should be listening on 8080, ${wssDataController}`);
 
-wssDataController.on('connection', async function connection(ws: WebSocket, req: Request) {
-  const endpointId: number = Number(req.url?.substring(1));
+// wssDataController.on('connection', async function connection(ws: WebSocket, req: Request) {
+//   const endpointId: number = Number(req.url?.substring(1));
 
-  // query to the database for graphql query data on the endpoint that established connection with ws server
-  const query = async () : Promise<void> => {
-    const sqlCommand: string = `
-      SELECT * FROM requests WHERE endpoint_id = $1 ORDER BY to_timestamp(timestamp, 'Dy Mon DD YYYY HH24:MI:SS') DESC;
-    `;
-    const values: number[] = [ endpointId ];
-    try {
-      const result: EndpointRequest[] = (await db.query(sqlCommand, values)).rows;
-      ws.send(JSON.stringify(result));
-    } catch (err: unknown) {
-      console.log('The database call within the websocket function has borked itself somehow')
-    }
-  }
+//   // query to the database for graphql query data on the endpoint that established connection with ws server
+//   const query = async () : Promise<void> => {
+//     const sqlCommand: string = `
+//       SELECT * FROM requests WHERE endpoint_id = $1 ORDER BY to_timestamp(timestamp, 'Dy Mon DD YYYY HH24:MI:SS') DESC;
+//     `;
+//     const values: number[] = [ endpointId ];
+//     try {
+//       const result: EndpointRequest[] = (await db.query(sqlCommand, values)).rows;
+//       ws.send(JSON.stringify(result));
+//     } catch (err: unknown) {
+//       console.log('The database call within the websocket function has borked itself somehow')
+//     }
+//   }
 
-  query(); // initial query upon establishing connection 
-  const interval = setInterval(query, 3000); // for continous update from database
+//   query(); // initial query upon establishing connection 
+//   const interval = setInterval(query, 3000); // for continous update from database
 
-  ws.on('close', () : void => {
-    clearInterval(interval);
-  })
+//   ws.on('close', () : void => {
+//     clearInterval(interval);
+//   })
 
-  ws.on('error', (err: unknown) : void => {
-    if(err instanceof Error) console.log('Websocket error in dataController:', err.message);
-  })
-})
+//   ws.on('error', (err: unknown) : void => {
+//     if(err instanceof Error) console.log('Websocket error in dataController:', err.message);
+//   })
+// })
