@@ -40,9 +40,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: [
+    '/',
     'http://localhost:8080',
     'http://localhost:3000',
     'http://localhost:3500',
+    'http://gleiphql.azurewebsites.net',
+    'https://gleiphql.azurewebsites.net',
+    'http://gleiphql.us-east-1.elasticbeanstalk.com',
+    'http://gleiphql.azurewebsites.net:8080',
+    'https://gleiphql.azurewebsites.net:8080',
   ],
   methods: [
     'GET',
@@ -137,7 +143,7 @@ wssDataController.on('connection', async function connection(ws: WebSocket, req:
   }
 
   query(); // initial query upon establishing connection 
-  const interval = setInterval(query, 3000); // for continous update from database
+  const interval = setInterval(query, 5000); // for continous update from database
 
   ws.on('close', () : void => {
     clearInterval(interval);
