@@ -44,19 +44,19 @@ const LineChart = () => {
   return (
     <section className='flex flex-col place-items-center'>
       <p className='flex flex-row bg-blue-950 text-white rounded-md overflow-hidden m-4'>
-      { chartDataType === 'Requests' ? timeIntervals.map((timeInterval: string) => {
+      { chartDataType === 'Requests' ? timeIntervals.map((timeInterval: string, index: number) => {
           if (chartTimeInterval === timeInterval) return (
-            <button className='p-2 border border-blue-950 border-r-black bg-blue-900' onClick={() : void => setChartTime(timeInterval)}>{timeInterval}</button>
+            <button key={index} className='p-2 border border-blue-950 border-r-black bg-blue-900' onClick={() : void => setChartTime(timeInterval)}>{timeInterval}</button>
           );
           return (
-            <button className='p-2 border border-blue-950 border-r-black hover:bg-blue-900' onClick={() : void => setChartTime(timeInterval)}>{timeInterval}</button>
+            <button key={index} className='p-2 border border-blue-950 border-r-black hover:bg-blue-900' onClick={() : void => setChartTime(timeInterval)}>{timeInterval}</button>
           );
-        }) : numRequests.map((numRequest: string) => {
+        }) : numRequests.map((numRequest: string, index: number) => {
           if(chartTimeInterval === numRequest) return (
-            <button className='p-2 border border-blue-950 border-r-black bg-blue-900' onClick={() : void => setChartTime(numRequest)}>{numRequest}</button>
+            <button key={index} className='p-2 border border-blue-950 border-r-black bg-blue-900' onClick={() : void => setChartTime(numRequest)}>{numRequest}</button>
           );
           return (
-            <button className='p-2 border border-blue-950 border-r-black hover:bg-blue-900' onClick={() : void => setChartTime(numRequest)}>{numRequest}</button>
+            <button key={index} className='p-2 border border-blue-950 border-r-black hover:bg-blue-900' onClick={() : void => setChartTime(numRequest)}>{numRequest}</button>
           )
         })
       }

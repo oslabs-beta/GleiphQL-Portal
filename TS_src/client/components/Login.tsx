@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <div className='relative border-4 border-neutral-800 bg-stone-100 w-[450px] h-[520px] max-w-[450px]  mx-auto p-8 px-8 rounded-lg'>
-      {isLoggedIn && <Navigate to="/dashboard" replace={true} />}
+      {isLoggedIn && <Navigate to='/dashboard' replace={true} />}
 
       <div className='absolute top-0 right-0 m-4' onClick={handleClose}>
         <FiX />

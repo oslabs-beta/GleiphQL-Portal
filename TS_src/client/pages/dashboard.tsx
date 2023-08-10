@@ -44,36 +44,38 @@ const Dashboard = () => {
 
   if(isLoading) return <div>Loading...</div>;
   return (
-    <div className='flex flex-col'>
+    <div className='h-full'>
       {!isLoggedIn && <Navigate to='/' replace={true} />}
       <Navbar />
-      <div>
-        <Sidebar />
-      </div>
-      <main className='flex flex-col place-items-center w-screen sm:pl-2 mt-10' id='content'>
-      { currEndpoint.endpoint_id? 
-        <>
-          <ChartHeader />
-          <div className='flex justify-evenly w-full'>
-            <div className='w-3/5 rounded-lg border border-slate-100 border-1'>
-              <LineChart />
-            </div>
-            <div className='w-1/4 mr-10 rounded-lg border border-slate-100 border-1'>
-              <div className='h-2/5 my-10'>
-                <DonutIPChart />
-              </div>
-              <div className='h-2/5'>
-                <DonutObjectChart />
-              </div>
-            </div>
-          </div>
-          <RequestTable />
-        </> : 
-        <div className='mt-8 flex flex-col place-items-center w-screen sm:pl-12'>
-          Add an endpoint
+      <main className='flex flex-row h-full'>
+        <div className='h-full'>
+          <Sidebar />
         </div>
-      }
-      </main> 
+        <div className='place-items-center w-screen sm:pl-2 mt-10' id='content'>
+          {currEndpoint.endpoint_id? 
+          <>
+            <ChartHeader />
+            <article className='flex flex-col sm:flex-row sm:justify-evenly w-full pl-12'>
+              <div className='w-3/5 rounded-lg border border-slate-100 border-1'>
+                <LineChart />
+              </div>
+              <div className='w-3/5 sm:w-1/4 mr-10 rounded-lg border border-slate-100 border-1'>
+                <div className='h-2/5 my-10'>
+                  <DonutIPChart />
+                </div>
+                <div className='h-2/5'>
+                  <DonutObjectChart />
+                </div>
+              </div>
+            </article>
+            <RequestTable />
+          </> : 
+          <p className='mt-8 flex justify-center place-items-center'>
+            Add an Endpoint
+          </p>
+        }
+        </div> 
+      </main>
     </div>
   );
 }

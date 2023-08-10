@@ -47,7 +47,7 @@ const Navbar = () => {
   }
 
   return (
-    <Disclosure as='nav' className='w-screen bg-blue-950 text-white z-[1036] sticky top-0 z-[1035]'>
+    <Disclosure as='nav' className='w-full bg-blue-950 text-white z-[1036] sticky top-0 z-[1035]'>
       {({ open }) => (
         <>
           <div className='mx-auto px-2 sm:px-6 lg:px-8'>

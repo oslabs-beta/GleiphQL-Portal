@@ -1,6 +1,7 @@
 import ProfileCard from './ProfileCard';
 import { Element } from 'react-scroll';
 import { ProfileCardProps } from '../../types';
+import { Slide, Fade } from 'react-awesome-reveal';
 
 const profileCards: ProfileCardProps[] = [
   {
@@ -45,23 +46,27 @@ const MeetTheTeam = () => {
   return (
     <>
       <Element name='meet-team'>
-        <section id='meet-team' className='meetTheTeam-bg min-h-screen flex flex-col justify-center items-center p-10 mb-8'>
-          <h2 className='text-5xl font-extrabold border-black border-b-2 border-x-0 border-t-0'>Meet the Team</h2>
-          <div className='flex flex-wrap justify-center'>
-            {
-              profileCards.map((profile : ProfileCardProps) => {
-                const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
-                return <ProfileCard
-                key = {memberName}
-                imageSrc = {imageSrc}
-                memberName = {memberName}
-                githubLink = {githubLink}
-                linkedinLink = {linkedinLink}
-                memberBio = {memberBio}
-                />
-              })
-            }
-          </div>
+        <section id='meet-team' className='meetTheTeam-bg min-h-screen flex flex-col justify-center items-center p-10'>
+          <Slide>
+            <h2 className='text-5xl font-extrabold'><u>Meet the Team</u></h2>
+          </Slide>
+          <Fade delay={1e3} cascade damping={1e-1}>
+            <div className='flex flex-wrap justify-center'>
+              {
+                profileCards.map((profile : ProfileCardProps) => {
+                  const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
+                  return <ProfileCard
+                  key = {memberName}
+                  imageSrc = {imageSrc}
+                  memberName = {memberName}
+                  githubLink = {githubLink}
+                  linkedinLink = {linkedinLink}
+                  memberBio = {memberBio}
+                  />
+                })
+              }
+            </div>
+          </Fade>
         </section>
       </Element>
     </>

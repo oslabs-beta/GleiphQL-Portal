@@ -47,7 +47,7 @@ app.use(cors({
     'POST',
     'DELETE'
   ],
-  credentials: true,
+  // credentials: true,
 }));
 
 app.use(session({

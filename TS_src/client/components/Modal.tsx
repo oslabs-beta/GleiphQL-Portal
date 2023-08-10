@@ -10,10 +10,8 @@ interface ModalProps {
 }
 
 const Modal = ({ open, onClose } : ModalProps) => {
-  if (!open) return null;
-
   const { showLogin, showRegistration } : PartialStore = useStore();
-
+  if (!open) return null;
   return (
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center text-black z-10'>
       <div onClick={(e: MouseEvent<HTMLElement>) : void => {e.stopPropagation()}}>
