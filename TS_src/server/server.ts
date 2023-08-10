@@ -9,6 +9,7 @@ import db, { pool } from './models/dbModel';
 import { ErrorObject, EndpointRequest } from '../types';
 import { WebSocket, WebSocketServer } from 'ws';
 import helmet from 'helmet';
+import path from 'path'
 
 
 import express, {
@@ -32,7 +33,7 @@ const app: Express = express();
 
 // app.use('trust proxy', 1);
 // app.disable('x-powered-by');
-app.use(helmet());
+// app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,6 +42,7 @@ app.use(cors({
   origin: [
     'http://localhost:8080',
     'http://localhost:3000',
+    'http://localhost:3500',
   ],
   methods: [
     'GET',
@@ -49,6 +51,8 @@ app.use(cors({
   ],
   // credentials: true,
 }));
+
+app.use(express.static(path.resolve(__dirname, '../../dist/client')))
 
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
@@ -96,6 +100,11 @@ app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFuncti
   console.log(errorObj.log);
   res.status(errorObj.status).json(errorObj.message);
 });
+
+// app.use(express.static(path.join(__dirname, '../../dist/client')));
+app.get("*", async (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/client/index.html'))
+})
 
 app.use((req: Request, res: Response) : void => {
   res.status(404).send('This is not the page you\'re looking for...')
