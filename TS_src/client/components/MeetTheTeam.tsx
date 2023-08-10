@@ -1,7 +1,7 @@
-import { FC, ReactElement} from 'react';
 import ProfileCard from './ProfileCard';
 import { Element } from 'react-scroll';
 import { ProfileCardProps } from '../../types';
+import { Slide, Fade } from 'react-awesome-reveal';
 import JDong from '../../images/JDong.png'
 import ALarkin from '../../images/ALarkin.jpg';
 import KPhan from '../../images/KPhan.jpg';
@@ -44,31 +44,34 @@ const profileCards: ProfileCardProps[] = [
     🎤🔧 Our 24/7 hustler doubles as a Kpop idol, spreading smiles and beats worldwide. 
     But don't be fooled by the dazzling stage presence—this fierce full-stack engineer has an affinity for backend problem-solving skills that'll leave even the toughest bugs shaking in their virtual boots!`
   }
-]
+];
 
-const MeetTheTeam: FC = () : ReactElement => {
+const MeetTheTeam = () => {
 
   return (
     <>
       <Element name='meet-team'>
-        <section id='meet-team' className='meetTheTeam-bg min-h-screen flex flex-col justify-center items-center p-10 mb-8'>
-          <h2 className='text-5xl font-extrabold border-black border-b-2 border-x-0 border-t-0'>Meet the Team</h2>
-          <div className='flex flex-wrap justify-center'>
-            {
-              profileCards.map((profile : ProfileCardProps, i) : ReactElement => {
-                const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
-                return <ProfileCard
-                key = {i}
-                id = {memberName}
-                imageSrc = {imageSrc}
-                memberName = {memberName}
-                githubLink = {githubLink}
-                linkedinLink = {linkedinLink}
-                memberBio = {memberBio}
-                />
-              })
-            }
-          </div>
+        <section id='meet-team' className='meetTheTeam-bg min-h-screen flex flex-col justify-center items-center p-10'>
+          <Slide>
+            <h2 className='text-5xl font-extrabold'><u>Meet the Team</u></h2>
+          </Slide>
+          <Fade delay={1e3} cascade damping={1e-1}>
+            <div className='flex flex-wrap justify-center'>
+              {
+                profileCards.map((profile : ProfileCardProps) => {
+                  const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
+                  return <ProfileCard
+                  key = {memberName}
+                  imageSrc = {imageSrc}
+                  memberName = {memberName}
+                  githubLink = {githubLink}
+                  linkedinLink = {linkedinLink}
+                  memberBio = {memberBio}
+                  />
+                })
+              }
+            </div>
+          </Fade>
         </section>
       </Element>
     </>

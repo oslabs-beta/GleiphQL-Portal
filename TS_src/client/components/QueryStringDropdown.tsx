@@ -4,36 +4,33 @@ import { Menu, Transition } from '@headlessui/react'
 
 export default function QueryStringDropdown({queryString}: { queryString: string }) {
   function indentQueryLines(linesArray: string[]) {
-    let indentLevel = 0;
-    const indentedLinesArray = [];
+    let indentLevel: number = 0;
+    const indentedLinesArray: string[] = [];
   
     for (const line of linesArray) {
-      const trimmedLine = line.trim();
+      const trimmedLine: string = line.trim();
   
       if (!trimmedLine) {
         continue;
       }
   
       if (trimmedLine.endsWith('{')) {
-        indentedLinesArray.push('  '.repeat(indentLevel) + trimmedLine);
         indentLevel++;
       } else if (trimmedLine.endsWith('}')) {
         indentLevel--;
-        indentedLinesArray.push('  '.repeat(indentLevel) + trimmedLine);
-      } else {
-        indentedLinesArray.push('  '.repeat(indentLevel) + trimmedLine);
       }
+      indentedLinesArray.push('  '.repeat(indentLevel) + trimmedLine);
     }
   
     return indentedLinesArray;
   }
 
-  function queryToLinesArray(queryString: string) {
-    const linesArray = queryString.trim().split('\n').map(line => line.trim());
+  function queryToLinesArray(queryString: string) : string[] {
+    const linesArray: string[] = queryString.trim().split('\n').map(line => line.trim());
     return linesArray;
   }
 
-  const queryArr = indentQueryLines(queryToLinesArray(queryString))
+  const queryArr: string[] = indentQueryLines(queryToLinesArray(queryString));
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
@@ -53,7 +50,7 @@ export default function QueryStringDropdown({queryString}: { queryString: string
       >
         <Menu.Items className='absolute right-0 z-10 mt-2 w-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='py-1'>
-            {queryArr.map((line, i) => {
+            {queryArr.map((line: string, i: number) => {
               return (
                 <Menu.Item key={i}>
                   <a className='text-gray-700 block px-4 py-0 text-xs whitespace-pre'>

@@ -9,6 +9,7 @@ import db, { pool } from './models/dbModel';
 import { ErrorObject, EndpointRequest } from '../types';
 import { WebSocket, WebSocketServer } from 'ws';
 import helmet from 'helmet';
+import path from 'path'
 
 
 import express, {
@@ -32,23 +33,32 @@ const app: Express = express();
 
 // app.use('trust proxy', 1);
 // app.disable('x-powered-by');
-app.use(helmet());
+//app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: [
+    '/',
     'http://localhost:8080',
     'http://localhost:3000',
+    'http://localhost:3500',
+    'http://gleiphql.azurewebsites.net',
+    'https://gleiphql.azurewebsites.net',
+    'http://gleiphql.us-east-1.elasticbeanstalk.com',
+    'http://gleiphql.azurewebsites.net:8080',
+    'https://gleiphql.azurewebsites.net:8080',
   ],
   methods: [
     'GET',
     'POST',
     'DELETE'
   ],
-  credentials: true,
+  // credentials: true,
 }));
+
+app.use(express.static(path.resolve(__dirname, '../../dist/client')))
 
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
@@ -86,16 +96,21 @@ app.use('/api/endpoint', endpointRouter);
 app.use('/api/session', sessionRouter);
 
 
-app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) : void  => {
-  const defaultErr: ErrorObject = {
-    log: 'Express error handler caught unknown middleware error',
-    status: 500,
-    message: { err: 'An error occurred.' },
-  };
-  const errorObj: ErrorObject = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  res.status(errorObj.status).json(errorObj.message);
-});
+// app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) : void  => {
+//   const defaultErr: ErrorObject = {
+//     log: 'Express error handler caught unknown middleware error',
+//     status: 500,
+//     message: { err: 'An error occurred.' },
+//   };
+//   const errorObj: ErrorObject = Object.assign({}, defaultErr, err);
+//   console.log(errorObj.log);
+//   res.status(errorObj.status).json(errorObj.message);
+// });
+
+// app.use(express.static(path.join(__dirname, '../../dist/client')));
+app.get("*", async (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/client/index.html'))
+})
 
 app.use((req: Request, res: Response) : void => {
   res.status(404).send('This is not the page you\'re looking for...')
@@ -128,7 +143,7 @@ wssDataController.on('connection', async function connection(ws: WebSocket, req:
   }
 
   query(); // initial query upon establishing connection 
-  const interval = setInterval(query, 3000); // for continous update from database
+  const interval = setInterval(query, 5000); // for continous update from database
 
   ws.on('close', () : void => {
     clearInterval(interval);

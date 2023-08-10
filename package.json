@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "start": "node dist/server/server.js",
     "dev": "concurrently \"cd ./TS_src/client && vite\" \"cd ./TS_src/server && nodemon server.ts\" \"npm run watch:css\"",
     "build": "concurrently \"tsc\" \"cd ./TS_src/client && vite build\"",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -39,6 +40,7 @@
     "pg": "^8.11.0",
     "postcss": "^8.4.24",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.2.5",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-github-btn": "^1.4.0",

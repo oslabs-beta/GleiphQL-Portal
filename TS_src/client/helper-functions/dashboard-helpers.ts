@@ -1,13 +1,6 @@
-import { EndpointRequest } from '../../types';
+import { EndpointRequest, DataSet } from '../../types';
 
 type ValType = 'complexity_score' | 'query_depth' | 'complexity_limit'; // for use with getValue helper function
-
-interface DataSet {
-  label: string;
-  data: number[];
-  borderColor: string;
-  backgroundColor: string;
-}
 
 interface ChartData {
   labels: string[];
@@ -15,8 +8,8 @@ interface ChartData {
 }
 
 // Helper function to convert month name to month number
-function getMonthNumber(monthName: string) {
-  const months = [
+function getMonthNumber(monthName: string) : string {
+  const months: string[] = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
@@ -26,15 +19,11 @@ function getMonthNumber(monthName: string) {
 // create formattedDate for x-axis of the chart (used for dataTypes Complexity and Depth)
 const createXAxisPoint = (endpointRequest: EndpointRequest): string => {
   const rawDate: string = endpointRequest.timestamp;
-  const dateComponents = rawDate.split(' ');
-  const month = dateComponents[1];
-  const day = dateComponents[2];
-  const year = dateComponents[3];
-  const formattedDate = `${year}-${getMonthNumber(month)}-${day}`;
-
-  // const rawDate: string = endpointRequest.timestamp;
-  // const formattedDate: string = new Date(rawDate).toISOString().split('T')[0];
-  // console.log(formattedDate)
+  const dateComponents: string[] = rawDate.split(' ');
+  const month: string = dateComponents[1];
+  const day: string = dateComponents[2];
+  const year: string = dateComponents[3];
+  const formattedDate: string = `${year}-${getMonthNumber(month)}-${day}`;
   return formattedDate;
 };
 

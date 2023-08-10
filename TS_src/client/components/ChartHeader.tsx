@@ -1,9 +1,8 @@
-import { FC, ReactElement }  from 'react';
 import useStore from '../store';
-import { EndpointRequest, PartialStore } from '../../types';
+import { PartialStore } from '../../types';
 
 
-const ChartHeader: FC = () : ReactElement => {
+const ChartHeader = () => {
   const { endpointRequests } : PartialStore = useStore();
 
   // calculates the average complexity of the queries made to the endpoint and the number of blocked requests
@@ -22,7 +21,7 @@ const ChartHeader: FC = () : ReactElement => {
 
 
   return (
-    <header className='border rounded-lg border-slate-100 border-1 overflow-hidden w-3/4 m-4 grid grid-cols-1 place-content-center font-light'>
+    <header className='border rounded-lg border-slate-100 border-1 overflow-hidden w-full mb-4 pr-2 grid grid-cols-1 place-content-center font-light'>
       <table>
         <thead>
           <tr>
