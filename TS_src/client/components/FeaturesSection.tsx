@@ -1,8 +1,8 @@
 import { ReactElement, FC, useState } from 'react';
 import loginGif from '../public/images/loginGif.gif';
 import teamModalsGif from '../public/images/teamModalsGif.gif';
-import dashboardGif from '../public/images/dashboardGif.gif';
-import testingGif from '../public/images/mrBean-Testing.gif';
+import monitoringGif from '../public/images/dashboard-gif.gif';
+import apolloGif from '../public/images/apollo-server-gif.gif';
 import gleiphGif from '../public/images/gleiphQLGif.gif';
 import { FcLandscape, FcMoneyTransfer, FcPaid, FcBullish } from 'react-icons/fc';
 import { Element } from 'react-scroll';
@@ -20,8 +20,8 @@ const FeaturesSection: FC = () : ReactElement => {
     // the subsequent elements represent the GIFs for each feature
     { gifUrl: loginGif, isVisible: false },
     { gifUrl: teamModalsGif, isVisible: false },
-    { gifUrl: dashboardGif, isVisible: false },
-    { gifUrl: testingGif, isVisible: false }
+    { gifUrl: monitoringGif, isVisible: false },
+    { gifUrl: apolloGif, isVisible: false }
   ];
 
 
