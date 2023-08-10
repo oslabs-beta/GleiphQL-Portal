@@ -2,10 +2,15 @@ import { FC, ReactElement} from 'react';
 import ProfileCard from './ProfileCard';
 import { Element } from 'react-scroll';
 import { ProfileCardProps } from '../../types';
+import JDong from '../../images/JDong.png'
+import ALarkin from '../../images/ALarkin.jpg';
+import KPhan from '../../images/KPhan.jpg';
+import YYoon from '../../images/YYoon.jpg';
+
 
 const profileCards: ProfileCardProps[] = [
   {
-    imageSrc: '../public/images/JDong.png',
+    imageSrc: JDong,
     memberName: 'Jiecheng Dong',
     githubLink: 'https://github.com/jiedong111',
     linkedinLink: 'https://www.linkedin.com/in/jiecheng-dong-1522b8248/',
@@ -14,7 +19,7 @@ const profileCards: ProfileCardProps[] = [
     this engineer's linguistic prowess and artistic depth will undoubtedly leave you awe-inspired!`
   },
   {
-    imageSrc: '../public/images/ALarkin.jpg',
+    imageSrc: ALarkin,
     memberName: 'Andrew Larkin',
     githubLink: 'https://github.com/larkinaj',
     linkedinLink: 'https://www.linkedin.com/in/andrew-larkin-71395940/',
@@ -22,7 +27,7 @@ const profileCards: ProfileCardProps[] = [
     he's a full-stack mogul who can fix any glitch and conquer any coding challenge with a smile that could charm even the toughest bugs!`
   },
   {
-    imageSrc: '../public/images/KPhan.jpg',
+    imageSrc: KPhan,
     memberName: 'Kevin Phan',
     githubLink: 'https://github.com/KP824',
     linkedinLink: 'https://www.linkedin.com/in/kevinphan760/',
@@ -31,10 +36,10 @@ const profileCards: ProfileCardProps[] = [
     So whether they're coding or dancing under the neon lights, they're sure to leave you impressed and inspired!`
   }, 
   {
-    imageSrc: '../public/images/YYoon.jpg',
+    imageSrc: YYoon,
     memberName: 'Yeong Sil Yoon',
     githubLink: 'https://github.com/wendyys96',
-    linkedinLink: '',
+    linkedinLink: 'https://www.linkedin.com/in/yeong-sil-yoon/',
     memberBio: `Introducing the unstoppable force of tech and tunes!
     🎤🔧 Our 24/7 hustler doubles as a Kpop idol, spreading smiles and beats worldwide. 
     But don't be fooled by the dazzling stage presence—this fierce full-stack engineer has an affinity for backend problem-solving skills that'll leave even the toughest bugs shaking in their virtual boots!`

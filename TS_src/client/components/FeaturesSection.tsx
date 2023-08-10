@@ -1,9 +1,9 @@
 import { ReactElement, FC, useState } from 'react';
-import loginGif from '../public/images/loginGif.gif';
-import teamModalsGif from '../public/images/teamModalsGif.gif';
-import monitoringGif from '../public/images/dashboard-gif.gif';
-import apolloGif from '../public/images/apollo-server-gif.gif';
-import gleiphGif from '../public/images/gleiphQLGif.gif';
+import loginGif from '../../images/loginGif.gif';
+import teamModalsGif from '../../images/teamModalsGif.gif';
+import monitoringGif from '../../images/dashboard-gif.gif';
+import apolloGif from '../../images/apollo-server-gif.gif';
+import gleiphGif from '../../images/gleiphQLGif.gif';
 import { FcLandscape, FcMoneyTransfer, FcPaid, FcBullish } from 'react-icons/fc';
 import { Element } from 'react-scroll';
 
@@ -67,7 +67,7 @@ const FeaturesSection: FC = () : ReactElement => {
                           data-cy='gif-display'
                           alt='...' 
                           src={features[0].gifUrl} 
-                          className='w-full h-auto align-middle rounded-lg' />
+                          className='w-full h-auto align-middle rounded-lg border-solid border-4 border-neutral-950 drop-shadow-2xl' />
                       ) : (
                         <>
                           {features.slice(1).map((feature, index) => {
@@ -80,7 +80,7 @@ const FeaturesSection: FC = () : ReactElement => {
                                   data-cy='gif-display'
                                   key={index} 
                                   alt='...' 
-                                  src={feature.gifUrl} className='w-full h-auto align-middle rounded-lg' />
+                                  src={feature.gifUrl} className='w-full h-auto align-middle rounded-lg border-solid border-4 border-neutral-950 drop-shadow-2xl' />
                               );
                             }
                             // if no conditions are met

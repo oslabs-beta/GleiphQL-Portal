@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react';
 import { Element } from 'react-scroll';
+import gleiphQLLogo from '../../images/GleiphQL-Logo.png';
 
 
 const IntroSection: FC = () : ReactElement => {
@@ -23,7 +24,7 @@ const IntroSection: FC = () : ReactElement => {
             </a>
           </div>
           <div className='w-full lg:w-1/2 mt-8'>
-            <img className='object-center m-auto' src='../public/images/webapp.png' alt='screenshot of dashboard' width='800px'/>
+            <img className='object-center m-auto max-h-screen max-w-screen' src={gleiphQLLogo} alt='main-logo'/>
           </div>
         </section>
       </Element>
