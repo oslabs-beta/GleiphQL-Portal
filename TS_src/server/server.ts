@@ -7,9 +7,10 @@ import configurePassport from './passport';
 import cookieParser from 'cookie-parser';
 import db, { pool } from './models/dbModel';
 import { ErrorObject, EndpointRequest } from '../types';
-import { WebSocket, WebSocketServer } from 'ws';
+import { WebSocket, WebSocketServer } from 'ws'; 
 import helmet from 'helmet';
 import path from 'path'
+import http from 'http';
 
 
 import express, {
@@ -30,6 +31,8 @@ import sessionRouter from './routers/sessionRouter';
 const PORT = process.env.PORT || 3500;
 
 const app: Express = express();
+
+const httpServer = http.createServer(app);
 
 // app.use('trust proxy', 1);
 // app.disable('x-powered-by');
@@ -116,12 +119,12 @@ app.use((req: Request, res: Response) : void => {
   res.status(404).send('This is not the page you\'re looking for...')
 });
 
-app.listen(PORT, () : void =>
+httpServer.listen(PORT, () : void =>
   console.log(`Currently listening on port: ${PORT}`)
 );
 
 // websocket server
-const wssDataController : WebSocketServer = new WebSocketServer({port: 8080}); // port 443
+const wssDataController : WebSocketServer = new WebSocketServer({ server: httpServer }); // port 443
 
 console.log(`in wssData controller, should be listening on 8080, ${wssDataController}`);
 
