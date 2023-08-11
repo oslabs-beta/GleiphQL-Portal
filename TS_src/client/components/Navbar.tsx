@@ -6,6 +6,7 @@ import axios from 'axios';
 import Modal from './Modal';
 import { Link } from 'react-scroll';
 import { PartialStore } from '../../types';
+import logoWhite from '../../images/GleiphQL-Logo-white.png';
 
 interface Content {
   name: string;
@@ -65,6 +66,11 @@ const Navbar = () => {
                 </div>
               }
               <div id='nav-btns' className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+                <img
+                  src={logoWhite}
+                  alt="Logo"
+                  className='h-11 w-11 mr-2'
+                />
                 <h1 className='text-3xl text-white flex flex-shrink-0 items-center'>
                   <Link
                     to='intro' 
