@@ -36,7 +36,7 @@ const httpServer = http.createServer(app);
 
 // app.use('trust proxy', 1);
 // app.disable('x-powered-by');
-// app.use(helmet());
+//app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -99,16 +99,16 @@ app.use('/api/endpoint', endpointRouter);
 app.use('/api/session', sessionRouter);
 
 
-app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) : void  => {
-  const defaultErr: ErrorObject = {
-    log: 'Express error handler caught unknown middleware error',
-    status: 500,
-    message: { err: 'An error occurred.' },
-  };
-  const errorObj: ErrorObject = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  res.status(errorObj.status).json(errorObj.message);
-});
+// app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) : void  => {
+//   const defaultErr: ErrorObject = {
+//     log: 'Express error handler caught unknown middleware error',
+//     status: 500,
+//     message: { err: 'An error occurred.' },
+//   };
+//   const errorObj: ErrorObject = Object.assign({}, defaultErr, err);
+//   console.log(errorObj.log);
+//   res.status(errorObj.status).json(errorObj.message);
+// });
 
 // app.use(express.static(path.join(__dirname, '../../dist/client')));
 app.get("*", async (req, res) => {
