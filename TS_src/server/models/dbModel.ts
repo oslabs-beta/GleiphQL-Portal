@@ -1,6 +1,6 @@
 import * as pg from 'pg';
 
-const PG_URI: string = process.env.PG_URI || 'postgres://ofrazosd:rkoV-04ehlexIH3tHQNKt3rNMbKJ7_wM@rajje.db.elephantsql.com/ofrazosd';
+const PG_URI: string = process.env.PG_URI || '';
 
 export const pool: pg.Pool = new pg.Pool({
     connectionString: PG_URI,

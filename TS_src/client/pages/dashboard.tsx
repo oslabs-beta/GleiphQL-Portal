@@ -10,7 +10,7 @@ import Sidebar from '../components/Sidebar';
 import { DonutIPChart } from '../components/DonutIPChart';
 import { DonutObjectChart } from '../components/DonutObjectChart';
 import streamWS from '../helper-functions/websocket';
-import { PartialStore } from '../../types';
+import { EndpointRequest, PartialStore } from '../../types';
 
 
 const Dashboard = () => {
@@ -36,10 +36,21 @@ const Dashboard = () => {
   }, []);
 
   // establish connection with WebSocket Server for current endpoint
+  // useEffect(() : void => {
+  //   const fetchData = async () => {
+  //     const endpointData: EndpointRequest[] = await fetch(`/api/data/${currEndpoint.endpoint_id}`)
+  //     setEndpointRequests(endpointData)
+  //   };
+  
+  //   fetchData();
+    
+  // }, [currEndpoint]);
+
   useEffect(() : void => {
     // end previous connection if any
     if(connection !== null) connection();
     if(currEndpoint.endpoint_id) setConnection(streamWS(currEndpoint, setEndpointRequests));
+    
   }, [currEndpoint]);
 
   if(isLoading) return <div>Loading...</div>;
