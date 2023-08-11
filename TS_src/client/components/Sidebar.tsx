@@ -1,4 +1,4 @@
-import { FC, ReactElement, FormEvent, useEffect, useState, useRef} from 'react';
+import { FC, ReactElement, FormEvent, useEffect, useState, useRef } from 'react';
 import useStore from '../store';
 import ConfirmationModal from './ConfirmationModal';
 import axios from 'axios';
@@ -30,8 +30,8 @@ const Sidebar: FC = () : ReactElement => {
   const [addedURL, setAddedURL] = useState<string>('');
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(false);
 
-
   const cancelButtonRef = useRef(null);
+
 
   // set selected endpoint to current endpoint to view data
   const toggleEndPoint = (id: number, url: string) : void => {
@@ -78,6 +78,7 @@ const Sidebar: FC = () : ReactElement => {
     };
     fetchData();
   }, []);
+
   return (
     <nav
       id='sidenav-8'
@@ -233,7 +234,7 @@ const Sidebar: FC = () : ReactElement => {
                           </button>
                           <ConfirmationModal open={open} setOpen={setOpen} cancelButtonRef={cancelButtonRef} setEndpointArray={setEndpointArray} />
                         </div> 
-                      : null
+                      : <div></div>
                     }
                   </li>
                 )
@@ -277,5 +278,6 @@ const Sidebar: FC = () : ReactElement => {
     </nav>
   )
 }
+
 
 export default Sidebar;

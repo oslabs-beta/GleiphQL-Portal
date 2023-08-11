@@ -8,9 +8,9 @@ const SplashPage = () => {
   return (  
     <main>
       <IntroSection />
-        <FeaturesSection />
-        <InstructionSection />
-        <MeetTheTeam />
+      <FeaturesSection />
+      <InstructionSection />
+      <MeetTheTeam />
     </main>
   );
 }

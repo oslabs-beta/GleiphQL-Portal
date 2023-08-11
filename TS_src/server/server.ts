@@ -124,7 +124,7 @@ httpServer.listen(PORT, () : void =>
 );
 
 // websocket server
-const wssDataController : WebSocketServer = new WebSocketServer({ server: httpServer }); // port 443
+const wssDataController : WebSocketServer = new WebSocketServer({ server: httpServer }); 
 
 console.log(`in wssData controller, should be listening on 8080, ${wssDataController}`);
 

@@ -44,7 +44,7 @@ const InstructionSection = () => {
               </a>
             </Fade>
           </div>
-          <Fade delay={1e3} cascade damping={1e-1}>
+          <Fade delay={2e3} cascade damping={1e-1}>
             <div>
               <dl className='grid place-items-center md:w-1/2'>
                 <dt className='p-2'>npm: </dt>

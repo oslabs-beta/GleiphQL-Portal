@@ -43,7 +43,7 @@ const LineChart = () => {
 
   return (
     <section className='flex flex-col place-items-center'>
-      <p className='flex flex-row bg-blue-950 text-white rounded-md overflow-hidden m-4'>
+      <p className='flex flex-row bg-blue-950 text-white rounded-md overflow-hidden'>
       { chartDataType === 'Requests' ? timeIntervals.map((timeInterval: string, index: number) => {
           if (chartTimeInterval === timeInterval) return (
             <button key={index} className='p-2 border border-blue-950 border-r-black bg-blue-900' onClick={() : void => setChartTime(timeInterval)}>{timeInterval}</button>
