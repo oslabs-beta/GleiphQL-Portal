@@ -34,7 +34,11 @@ const RequestTable = () => {
                 <th className='hidden md:table-cell'>
                   <QueryStringDropdown queryString={row.query_string} />
                 </th>
-                <th className='hidden lg:table-cell'>{row.query_depth}</th>
+                <th className='hidden lg:table-cell'>
+                  {
+                    row.query_depth === null ? 'Exceeded' : row.query_depth
+                  }
+                </th>
                 <th className='hidden lg:table-cell'>
                   <div>
                     {row.object_types.objectTypes.length}

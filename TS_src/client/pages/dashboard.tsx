@@ -38,12 +38,21 @@ const Dashboard = () => {
   // establish connection with WebSocket Server for current endpoint
   // useEffect(() : void => {
   //   const fetchData = async () => {
-  //     const endpointData: EndpointRequest[] = await fetch(`/api/data/${currEndpoint.endpoint_id}`)
-  //     setEndpointRequests(endpointData)
+  //     try {
+  //       const response = await fetch(`/api/data/${currEndpoint.endpoint_id}`);
+        
+  //       if (response.ok) {
+  //         const endpointData: EndpointRequest[] = await response.json();
+  //         console.log(endpointData)
+  //         setEndpointRequests(endpointData);
+  //       } else {
+  //         console.error('Failed to fetch data:', response.statusText);
+  //       }
+  //     } catch (error) {
+  //       console.error('An error occurred while fetching data:', error);
+  //     }
   //   };
-  
   //   fetchData();
-    
   // }, [currEndpoint]);
 
   useEffect(() : void => {
