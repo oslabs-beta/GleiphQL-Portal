@@ -16,7 +16,7 @@ interface Content {
 const navigation: Content[] = [
   { name: 'features', offset: -50 },
   { name: 'get-started', offset: 30 },
-  { name: 'meet-team', offset: 30 },
+  { name: 'meet-team', offset: 20 },
 ]
 
 const Navbar = () => {
@@ -65,13 +65,13 @@ const Navbar = () => {
                   </Disclosure.Button>
                 </div>
               }
-              <div id='nav-btns' className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+              <div id='nav-btns' className='flex flex-1 items-center justify-center sm:justify-start'>
                 <img
                   src={logoWhite}
                   alt="Logo"
                   className='h-11 w-11 mr-2'
                 />
-                <h1 className='text-3xl text-white flex flex-shrink-0 items-center'>
+                <h1 className='text-3xl text-white flex flex-shrink-0 items-center cursor-pointer'>
                   <Link
                     to='intro' 
                     spy={true} 
@@ -86,7 +86,7 @@ const Navbar = () => {
                 </h1>
                 <div className='hidden sm:ml-6 sm:block'>
                   {/* Conditionally render the list items only if the user is not logged in */}
-                  <ul className='flex space-x-3'>
+                  <ul className='flex space-x-3 cursor-pointer'>
                     {!isLoggedIn && navigation.map((content: Content) => (
                       <li key={content.name}>
                         <Link 

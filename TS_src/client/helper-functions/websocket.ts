@@ -6,12 +6,7 @@ const streamWS = (currEndPoint: Endpoint, setEndpointRequests: SetEndpointReques
   const parsedURL = new URL(currentURL);
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
   const fetchWS = new WebSocket(`${protocol}://${parsedURL.hostname}:8080/${currEndPoint.endpoint_id}`)
-  console.log('websocket URL:', fetchWS)
-  // const fetchWS = new WebSocket(`ws://gleiphql.us-east-1.elasticbeanstalk.com:8080/${currEndPoint.endpoint_id}`)
-  // const fetchWS = new WebSocket(`ws://gleiphql.azurewebsites.net:8080/${currEndPoint.endpoint_id}`)
-  // const fetchWS = new WebSocket(`ws://localhost:8080/${currEndPoint.endpoint_id}`)
     fetchWS.onmessage = function(event) : void {
-      console.log('onmessage function')
       const data: EndpointRequest[] = JSON.parse(event.data);
       setEndpointRequests(data);
     }

@@ -12,5 +12,6 @@ export default defineConfig({
 	},
   build: {
     outDir: '../../dist/client', // Replace with the actual path
+    assetsInlineLimit: 0, // To prevent small assets from being inlined
   },
 })

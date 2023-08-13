@@ -166,6 +166,16 @@ h3 {
   transition: .5s;
 }
 
+.github-icon:hover {
+  transition: .5s;
+  color: #620296; /* Change to the lighter color you want */
+}
+
+.linkedin-icon:hover {
+  transition: .5s;
+  color: #0e76a8; /* Change to the lighter color you want */
+}
+
 /*    ~~ End of component: Profile Card   ~~   */
 
 /*  ~~ Start of component: yyoon's  ~~   */

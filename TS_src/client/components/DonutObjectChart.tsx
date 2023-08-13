@@ -44,7 +44,6 @@ export function DonutObjectChart() {
 
 
   const options = {
-    // responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {

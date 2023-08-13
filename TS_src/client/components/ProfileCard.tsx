@@ -27,10 +27,10 @@ const ProfileCard = ({
 
       <p className='flex justify-center mb-2'>
         <a href={githubLink} target='_blank' rel='noopener noreferrer' className='mr-4'>
-          <FaGithub size={48} />
+          <FaGithub size={48} className='github-icon'/>
         </a>
         <a href={linkedinLink} target='_blank' rel='noopener referrer'>
-          <FaLinkedin size={48} />
+          <FaLinkedin size={48} className='linkedin-icon'/>
         </a>
       </p>
     </div>
