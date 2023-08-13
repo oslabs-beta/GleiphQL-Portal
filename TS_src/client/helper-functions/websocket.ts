@@ -5,7 +5,7 @@ const streamWS = (currEndPoint: Endpoint, setEndpointRequests: SetEndpointReques
   const currentURL = window.location.href
   const parsedURL = new URL(currentURL);
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
-  const fetchWS = new WebSocket(`${protocol}://${parsedURL.hostname}:8080/${currEndPoint.endpoint_id}`)
+  const fetchWS = new WebSocket(`${protocol}://${parsedURL.hostname}/${currEndPoint.endpoint_id}`)
     fetchWS.onmessage = function(event) : void {
       const data: EndpointRequest[] = JSON.parse(event.data);
       setEndpointRequests(data);
