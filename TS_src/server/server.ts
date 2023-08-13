@@ -34,10 +34,6 @@ const app: Express = express();
 
 const httpServer = http.createServer(app);
 
-// app.use('trust proxy', 1);
-// app.disable('x-powered-by');
-//app.use(helmet());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -49,7 +45,6 @@ app.use(cors({
     'http://localhost:3500',
     'http://gleiphql.azurewebsites.net',
     'https://gleiphql.azurewebsites.net',
-    'http://gleiphql.us-east-1.elasticbeanstalk.com',
     'http://gleiphql.azurewebsites.net:8080',
     'https://gleiphql.azurewebsites.net:8080',
   ],
@@ -58,7 +53,6 @@ app.use(cors({
     'POST',
     'DELETE'
   ],
-  // credentials: true,
 }));
 
 app.use(express.static(path.resolve(__dirname, '../../dist/client')))
@@ -69,11 +63,11 @@ app.use(session({
     tableName: 'sessions'
   }),
   secret: process.env.SESSION_SECRET || 'secret',
+  cookie: { 
+    secure: true,
+    httpOnly: true
+  },
   name: 'sessionId',
-  // cookie: { 
-  //   secure: true,
-  //   httpOnly: true
-  // },
   resave: false,
   saveUninitialized: true,
 }))
@@ -99,18 +93,6 @@ app.use('/api/endpoint', endpointRouter);
 app.use('/api/session', sessionRouter);
 
 
-// app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) : void  => {
-//   const defaultErr: ErrorObject = {
-//     log: 'Express error handler caught unknown middleware error',
-//     status: 500,
-//     message: { err: 'An error occurred.' },
-//   };
-//   const errorObj: ErrorObject = Object.assign({}, defaultErr, err);
-//   console.log(errorObj.log);
-//   res.status(errorObj.status).json(errorObj.message);
-// });
-
-// app.use(express.static(path.join(__dirname, '../../dist/client')));
 app.get("*", async (req, res) => {
   res.sendFile(path.join(__dirname, '../../dist/client/index.html'))
 })

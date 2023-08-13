@@ -7,9 +7,9 @@ const IntroSection = () => {
   return (
     <>
       <Element name='intro'>
-        <section id='intro' className='introsection min-h-screen pb-20 px-8 flex flex-col lg:flex-row justify-around items-center'>
-          <div className='flex-col p-4 text-center lg:w-1/2 ml-20'>
-            <h2 data-cy='intro-title' className='text-5xl font-extrabold py-2 text-left'>Protect and monitor your GraphQL Endpoints</h2>
+        <section id='intro' className='introsection min-h-screen pb-20 pr-8 flex flex-col lg:flex-row justify-around items-center'>
+          <div className='flex-col py-4 pr-4 text-center lg:w-1/2 ml-20'>
+            <h2 data-cy='intro-title' className='text-5xl font-extrabold py-2 text-left mb-10'>Protect and monitor your GraphQL Endpoints</h2>
             <p data-cy='intro-body' className='text-xl text-left pb-8'>
               GleiphQL is an Express middleware library which enhances performance
               and security by calculating query complexity, optimizing resource

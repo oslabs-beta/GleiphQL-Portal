@@ -24,12 +24,12 @@ const InstructionSection = () => {
             <Slide>
               <h2
                 data-cy='instruction-title'
-                className='text-5xl font-extrabold p-2'>
+                className='text-5xl font-extrabold p-2 mb-10'>
                   Get Started Easily
               </h2>
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
-              <p data-cy='instruction-body' className='pb-8'>
+              <p data-cy='instruction-body' className='pb-14 text-2xl'>
                 Ready to revolutionize your GraphQL endpoint?
                 Take the first step towards a faster, smarter,
                 and more secure API infrastructure.
