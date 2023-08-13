@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div className='flex flex-col min-h-screen splashpage'>
+    <div className='flex flex-col min-h-screen min-w-screen splashpage'>
       <Navbar />
       <SplashPage />
       <Footer />

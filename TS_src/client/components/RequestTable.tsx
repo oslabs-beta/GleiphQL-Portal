@@ -8,8 +8,8 @@ const RequestTable = () => {
   const { endpointRequests } : PartialStore = useStore();
 
   return (
-    <section className='my-12 rounded-lg border border-slate-100 border-1 overflow-hidden w-11/12'>
-      <h2 className='flex flex-col justify-center items-center text-lg m-8'>Recent Requests to the Endpoint</h2>
+    <section className='my-12 rounded-lg border border-slate-100 border-1 overflow-hidden w-full sm:px-8'>
+      <h2 className='flex flex-col justify-center items-center text-lg p-8'>Recent Requests to the Endpoint</h2>
       <table className='m-0 table-auto'>
         <thead>
           <tr className='h-12'>
@@ -34,7 +34,11 @@ const RequestTable = () => {
                 <th className='hidden md:table-cell'>
                   <QueryStringDropdown queryString={row.query_string} />
                 </th>
-                <th className='hidden lg:table-cell'>{row.query_depth}</th>
+                <th className='hidden lg:table-cell'>
+                  {
+                    row.query_depth === null ? 'Exceeded' : row.query_depth
+                  }
+                </th>
                 <th className='hidden lg:table-cell'>
                   <div>
                     {row.object_types.objectTypes.length}
