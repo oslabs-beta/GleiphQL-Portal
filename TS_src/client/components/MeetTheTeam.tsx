@@ -40,19 +40,35 @@ const profileCards: ProfileCardProps[] = [
 ];
 
 const MeetTheTeam = () => {
+  // declare variables to assign cypress selectors for testing
+  const profileNameSelector = '[data-cy=profile-name';
+  const profileBioSelector = '[data-cy=profile-bio';
+  const githubLinkSelector = '[data-cy=github-link]';
+  const linkedinLinkSelector = '[data-cy=linkedin-link]';
+
 
   return (
     <>
       <Element name='meet-team'>
         <section id='meet-team' className='meetTheTeam-bg min-h-screen flex flex-col justify-center items-center p-10'>
           <Slide>
-            <h2 className='text-5xl font-extrabold mb-10'>Meet the Team</h2>
+            <h2 data-cy='team-header' className='text-5xl font-extrabold mb-10'>Meet the Team</h2>
           </Slide>
           <Fade delay={1e3} cascade damping={1e-1}>
-            <div className='flex flex-wrap justify-center'>
+            <div data-cy='profile-cards' className='flex flex-wrap justify-center'>
               {
                 profileCards.map((profile : ProfileCardProps) => {
-                  const { imageSrc, memberName, githubLink, linkedinLink, memberBio } = profile;
+                  const { 
+                    imageSrc, 
+                    memberName, 
+                    githubLink, 
+                    linkedinLink, 
+                    memberBio,
+                    profileNameSelector,
+                    profileBioSelector,
+                    githubLinkSelector,
+                    linkedinLinkSelector,
+                  } = profile;
                   return <ProfileCard
                   key = {memberName}
                   imageSrc = {imageSrc}
@@ -60,6 +76,10 @@ const MeetTheTeam = () => {
                   githubLink = {githubLink}
                   linkedinLink = {linkedinLink}
                   memberBio = {memberBio}
+                  profileNameSelector = {profileNameSelector}
+                  profileBioSelector = {profileBioSelector}
+                  githubLinkSelector = {githubLinkSelector}
+                  linkedinLinkSelector = {linkedinLinkSelector}
                   />
                 })
               }

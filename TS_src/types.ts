@@ -65,6 +65,10 @@ export interface ProfileCardProps {
   githubLink: string;
   linkedinLink: string;
   memberBio: string;
+  profileNameSelector: string;
+  profileBioSelector: string;
+  githubLinkSelector: string;
+  linkedinLinkSelector: string;
 };
 
 export interface ErrorObject {
@@ -94,3 +98,10 @@ export type Connection = (() => void) | null;
 export type SetConnection = (connection: Connection) => void;
 
 export type AsyncMiddleWare = (req: Request, res: Response, next: NextFunction) => Promise<void>;
+
+// export type ProfileCardPropsWithSelectors = ProfileCardProps & {
+//   profileNameSelector: string;
+//   profileBioSelector: string;
+//   githubLinkSelector: string;
+//   linkedinLinkSelector: string;
+// };

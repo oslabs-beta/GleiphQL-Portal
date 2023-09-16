@@ -2,13 +2,19 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { ProfileCardProps } from '../../types';
 
-const ProfileCard = ({
+const ProfileCard: React.FC<ProfileCardProps> = ({
   imageSrc,
   memberName,
   githubLink,
   linkedinLink,
-  memberBio
+  memberBio,
+  profileNameSelector,
+  profileBioSelector,
+  githubLinkSelector,
+  linkedinLinkSelector,
 }: ProfileCardProps) => {
+
+
   return (
     <div className='profile-card'>
       <figure className='image'>

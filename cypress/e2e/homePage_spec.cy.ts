@@ -1,5 +1,3 @@
-
-
 describe('E2E testing for front end, home page', () => {
   // before each test, visit the landing page
   beforeEach(() => {
@@ -25,74 +23,39 @@ describe('E2E testing for front end, home page', () => {
       .should('have.text', 'Features')
 
     // checking if GIF section exists and rendering properly
-    cy.get('[data-cy=gif-display]')
+    cy.get('[data-cy=gif-monitoring]')
       .should('exist')
 
-    // checking text content of each feature listed
-    cy.get('[data-cy=feat-1-title]')
-      .should('have.text', 'Complexity Analysis')
-
-    cy.get('[data-cy=feat-1-body]')
-      .should('have.text', 'Dynamically calculate the resource requirements of each query, providing you with invaluable insights into its impact on your system.')
-
-    cy.get('[data-cy=feat-2-title]')
-      .should('have.text', 'Rate Limiting')
-
-    cy.get('[data-cy=feat-2-body]')
-      .should('have.text', 'Control and regulate incoming requests, ensuring fair and efficient resource allocation while safeguarding against abusive usage patterns.')
-
-    cy.get('[data-cy=feat-3-title]')
+    // checking text content of Monitoring section
+    cy.get('[data-cy=monitoring-section]')
       .should('have.text', 'Monitoring')
 
-    cy.get('[data-cy=feat-3-body]')
-      .should('have.text', `Gain deep visibility into your API's usage patterns, track response times, monitor error rates, and optimize your system's performance.`)
+    cy.get('[data-cy=feature1]')
+      .should('have.text', 'User friendly dashboard to add additional endpoints and to navigate insightful metrics.')
+
+    cy.get('[data-cy=feature2]')
+      .should('have.text', 'An analysis of the most frequently called API endpoints and a display of request trends over different time frames.')
+
+    cy.get('[data-cy=feature3]')
+      .should('have.text', 'A table to represent query metrics, including query text, depth, and complexity score.')
+
+    // checking text content of Rate Limiting section
+    cy.get('[data-cy=gif-complexity-scores]')
+      .should('exist')
+
+    cy.get('[data-cy=rate-limiting-section]')
+      .should('have.text', `Rate Limiting`)
     
-    cy.get('[data-cy=feat-4-title]')
-      .should('have.text', 'Documentation')
+    cy.get('[data-cy=feature4]')
+      .should('have.text', 'Swiftly computes complexity scores pre-execution based on user-defined costs and list-sizes exposed in the schema definition directives.')
 
-    cy.get('[data-cy=feat-4-body]')
-      .should('have.text', 'Built by developers for developers. Our comprehensive documentation makes it easy to work with GleiphQL!')
+    cy.get('[data-cy=feature5]')
+      .should('have.text', 'Effortless customization that allows the user to configure rate limiting rules, ensuring optimal control and flexibility over API usage limits.')
+
+    cy.get('[data-cy=feature6]')
+    .should('have.text', 'Seamlessly integrates with Apollo Client and Server, offering smooth integration with existing Apollo-powered architecture.')
   })
 
-
-  it('checking functionality of the Features buttons', () => {
-    // feature 1 button
-    cy.get('[data-cy=feat-1-btn]')
-      .should('exist')
-      .should('have.text', `Let's see feature 1 in action`)
-      //.click()
-    cy.get('[data-cy=gif-display]')
-      .should('be.visible')
-      .should('exist')
-      
-
-    // feature 2 button
-    cy.get('[data-cy=feat-2-btn]')
-      .should('exist')
-      .should('have.text', `Let's see feature 2 in action`)
-      //.click()
-    cy.get('[data-cy=gif-display]')
-      .should('be.visible')
-      .should('exist')
-
-    // feature 3 button
-    cy.get('[data-cy=feat-3-btn]')
-      .should('exist')
-      .should('have.text', `Let's see feature 3 in action`)
-      //.click()
-    cy.get('[data-cy=gif-display]')
-      .should('be.visible')
-      .should('exist')
-
-    // feature 4 button
-    cy.get('[data-cy=feat-4-btn]')
-      .should('exist')
-      .should('have.text', `Let's see feature 4 in action`)
-      //.click()
-    cy.get('[data-cy=gif-display]')
-      .should('be.visible')
-      .should('exist')
-  })
 
   // Checking content of Instruction Section
   it ('checking text content and of the Instructions Section', () => {
@@ -127,6 +90,20 @@ it('should open a new tab when the "More Info" link is clicked', () => {
 
   // currently not passing even though new tab address is correct
   //cy.url().should('eq', 'https://github.com/oslabs-beta/GleiphQL');
+});
+
+it('checking content and functionality of the "Meet the Team" section', () => {
+  cy.get('[data-cy=team-header]')
+    .should('exist')
+    .should('have.text', 'Meet the Team')
+
+  cy.get('[data-cy=profile-cards]').each(($profileCard, index) => {
+    // Use assertions to check the content of each profile card
+    cy.wrap($profileCard).within(() => {
+      cy.get('[data-cy=profile-name]').should('have.text', profileCards[index].memberName);
+      cy.get('[data-cy=profile-bio]').should('have.text', profileCards[index].memberBio);
+    });
+  });
 });
 
 
