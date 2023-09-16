@@ -28,7 +28,7 @@ const profileCards: ProfileCardProps[] = [
     memberName: 'Kevin Phan',
     githubLink: 'https://github.com/KP824',
     linkedinLink: 'https://www.linkedin.com/in/kp824/',
-    memberBio: 'Always striving for personal growth in learning and communication. I enjoy casually indulging in chess and hiking outside of work.'
+    memberBio: 'Always striving for personal growth in learning and communication. I enjoy indulging in chess and hiking outside of coding.'
   }, 
   {
     imageSrc: YYoon,
