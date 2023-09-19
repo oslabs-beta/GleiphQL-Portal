@@ -8,7 +8,8 @@ import KPhan from '../../images/KPhan.jpg';
 import YYoon from '../../images/YYoon.jpg';
 
 
-const profileCards: ProfileCardProps[] = [
+
+export const profileCards: ProfileCardProps[] = [
   {
     imageSrc: JDong,
     memberName: 'Jiecheng Dong',
@@ -40,12 +41,6 @@ const profileCards: ProfileCardProps[] = [
 ];
 
 const MeetTheTeam = () => {
-  // declare variables to assign cypress selectors for testing
-  const profileNameSelector = '[data-cy=profile-name';
-  const profileBioSelector = '[data-cy=profile-bio';
-  const githubLinkSelector = '[data-cy=github-link]';
-  const linkedinLinkSelector = '[data-cy=linkedin-link]';
-
 
   return (
     <>
@@ -64,10 +59,6 @@ const MeetTheTeam = () => {
                     githubLink, 
                     linkedinLink, 
                     memberBio,
-                    profileNameSelector,
-                    profileBioSelector,
-                    githubLinkSelector,
-                    linkedinLinkSelector,
                   } = profile;
                   return <ProfileCard
                   key = {memberName}
@@ -76,10 +67,7 @@ const MeetTheTeam = () => {
                   githubLink = {githubLink}
                   linkedinLink = {linkedinLink}
                   memberBio = {memberBio}
-                  profileNameSelector = {profileNameSelector}
-                  profileBioSelector = {profileBioSelector}
-                  githubLinkSelector = {githubLinkSelector}
-                  linkedinLinkSelector = {linkedinLinkSelector}
+                  
                   />
                 })
               }
@@ -92,3 +80,10 @@ const MeetTheTeam = () => {
 };
 
 export default MeetTheTeam;
+
+/*
+profileNameSelector = {profileNameSelector}
+                  profileBioSelector = {profileBioSelector}
+                  githubLinkSelector = {githubLinkSelector}
+                  linkedinLinkSelector = {linkedinLinkSelector}
+*/

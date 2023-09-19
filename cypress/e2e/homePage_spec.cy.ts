@@ -1,3 +1,5 @@
+import { profileCards } from "client/components/MeetTheTeam";
+
 describe('E2E testing for front end, home page', () => {
   // before each test, visit the landing page
   beforeEach(() => {

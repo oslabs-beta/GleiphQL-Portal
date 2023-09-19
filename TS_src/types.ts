@@ -65,11 +65,14 @@ export interface ProfileCardProps {
   githubLink: string;
   linkedinLink: string;
   memberBio: string;
-  profileNameSelector: string;
+};
+
+/*
+profileNameSelector: string;
   profileBioSelector: string;
   githubLinkSelector: string;
   linkedinLinkSelector: string;
-};
+*/
 
 export interface ErrorObject {
   log: string;

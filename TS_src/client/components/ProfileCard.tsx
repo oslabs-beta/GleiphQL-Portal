@@ -8,12 +8,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   githubLink,
   linkedinLink,
   memberBio,
-  profileNameSelector,
-  profileBioSelector,
-  githubLinkSelector,
-  linkedinLinkSelector,
 }: ProfileCardProps) => {
-
+  // declare variables to assign cypress selectors for testing
+  
 
   return (
     <div className='profile-card'>
@@ -24,18 +21,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           className='w-full h-full rounded'
         />
 
-        <figcaption className='image-overlay'>
+        <figcaption data-cy='profile-bio' className='image-overlay'>
           {memberBio}
         </figcaption>
       </figure>
 
-      <h3 className='text-center mt-1 mb-1 text-xl font-bold'>{memberName}</h3>
+      <h3 data-cy='profile-name' className='text-center mt-1 mb-1 text-xl font-bold'>{memberName}</h3>
 
       <p className='flex justify-center mb-2'>
-        <a href={githubLink} target='_blank' rel='noopener noreferrer' className='mr-4'>
+        <a href={githubLink} target='_blank' rel='noopener noreferrer' className='mr-4' data-cy='github-link'>
           <FaGithub size={48} className='github-icon'/>
         </a>
-        <a href={linkedinLink} target='_blank' rel='noopener referrer'>
+        <a href={linkedinLink} target='_blank' rel='noopener referrer' data-cy='linkedin-link'>
           <FaLinkedin size={48} className='linkedin-icon'/>
         </a>
       </p>

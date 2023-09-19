@@ -7,12 +7,14 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    supportFile: 'cypress/support/e2e.ts', // Specify your TypeScript support file here
+    specPattern: 'cypress/e2e/**/*.spec.cy.ts',
   },
 
   component: {
     devServer: {
       framework: 'react',
       bundler: 'vite',
-      }
+    }
   },
 });
