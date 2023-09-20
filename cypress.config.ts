@@ -8,9 +8,10 @@ export default defineConfig({
       // implement node event listeners here
     },
     supportFile: 'cypress/support/e2e.ts', // Specify your TypeScript support file here
-    specPattern: 'cypress/e2e/**/*.spec.cy.ts',
+    specPattern: 'cypress/e2e/**/*_spec.cy.ts',
+    excludeSpecPattern: ['**/*.jpg', '**/*.png'],
   },
-
+  
   component: {
     devServer: {
       framework: 'react',
