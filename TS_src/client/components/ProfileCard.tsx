@@ -19,6 +19,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           src={imageSrc} 
           alt='Profile' 
           className='w-full h-full rounded'
+          data-cy='profile-image'
         />
 
         <figcaption data-cy='profile-bio' className='image-overlay'>

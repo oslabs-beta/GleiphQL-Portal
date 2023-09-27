@@ -88,6 +88,7 @@ describe ('Testing functionality of login component', () => {
   // Navigate to the login component
   beforeEach(() => {
     cy.visit('http://localhost:3000')
+    cy.clearCookies();
     cy.get('[data-cy=login-btn]').click()
   })
 
@@ -107,13 +108,15 @@ describe ('Testing functionality of login component', () => {
     // click the login button
     cy.get('[data-cy=login-submit]').click()
 
+    // redirects to dashboard
+    cy.url().should('include', '/dashboard');
+
     // successful login has a pop up
     cy.get('.Toastify__toast-body')
       .should('be.visible')
       .contains('Login successful!')
 
-    // redirects to dashboard
-    cy.url().should('include', '/dashboard');
+    
   })
 
   it ('Testing failed login functionality', () => {
